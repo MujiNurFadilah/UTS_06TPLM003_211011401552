@@ -1,125 +1,95 @@
 import 'package:flutter/material.dart';
 
+class Shoe {
+  final String title;
+  final String type;
+  final double price;
+  final String imageUrl;
+
+  Shoe({
+    required this.title,
+    required this.type,
+    required this.price,
+    required this.imageUrl,
+  });
+}
+
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.purple,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+class MyHomePage extends StatelessWidget {
+  final List<Shoe> shoes = [
+    Shoe(
+      title: 'Nike SB Zoom Blazer',
+      type: 'Mid Premium',
+      price: 28.795,
+      imageUrl:
+          'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/50d0490f-faba-4a8a-a056-16291abe440e/sb-zoom-blazer-mid-skate-shoes-LVGq5c.png',
+    ),
+    Shoe(
+      title: 'Nike Air Zoom Pegasus',
+      type: 'Men\'s Rood Running Shoes',
+      price: 29.995,
+      imageUrl:
+          'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/75acff44-c3b1-4afa-9e65-aa57019f18fc/structure-25-road-running-shoes-P72w0x.png',
+    ),
+    Shoe(
+      title: 'Nike ZoomX Vaporfly',
+      type: 'Men\'s Road Racing Shoe',
+      price: 219.695,
+      imageUrl:
+          'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/7f3d7a6c-23d7-4248-93d1-e9481900b341/streakfly-road-racing-shoes-V17qZm.png',
+    ),
+    Shoe(
+      title: 'Nike Air Force 1 S50',
+      type: 'Older Kids\' Shoe',
+      price: 26.295,
+      imageUrl:
+          'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/d98fd922-1a53-45ee-acf1-94d823f457d5/air-force-1-07-shoes-b0f549.png',
+    ),
+    Shoe(
+      title: 'Nike Waffle One',
+      type: 'Men\'s Shoes',
+      price: 28.295,
+      imageUrl:
+          'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/ab99f399-1dcd-4a62-9554-a7ed5baf3ce4/custom-air-max-1-shoes-by-you.png',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text('Shoes'),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: ListView.builder(
+        itemCount: shoes.length,
+        itemBuilder: (context, index) {
+          return Card(
+            margin: EdgeInsets.all(8),
+            child: ListTile(
+              leading: Image.network(shoes[index].imageUrl, width: 60),
+              title: Text(shoes[index].title),
+              subtitle: Text(shoes[index].type),
+              trailing: Text('\$${shoes[index].price.toStringAsFixed(2)}'),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+          );
+        },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
